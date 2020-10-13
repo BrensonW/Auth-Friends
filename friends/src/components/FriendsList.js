@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../api/axiosWithAuth";
 
 
+
 const FriendsList = () => {
-  //attempt to useHistory to rerender after axios post request
+  
 
   
 
@@ -29,7 +30,7 @@ const FriendsList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/friends", friendForm)
+      .post("/friends", friendForm)
       .then((res) => {
         console.log(" FriendsList: handleSubmit: res", res);
       })
@@ -40,7 +41,7 @@ const FriendsList = () => {
   const [data, setData] = useState([]);
   const getData = () => {
     axiosWithAuth()
-      .get("/api/friends")
+      .get("/friends")
       .then((res) => {
         console.log(" FriendsList: handleSubmit: useState: res", res);
         setData(res.data);
@@ -52,7 +53,7 @@ const FriendsList = () => {
   useEffect(() => {
     getData();
     console.log(" FriendsList: useEffect: data", data);
-  }, [clicked, data]);
+  }, [clicked]);
   return (
     <div>
       <h2>Friends List:</h2>
